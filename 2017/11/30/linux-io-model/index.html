@@ -110,13 +110,13 @@
 
 
 
-<meta name="description" content="知之为知之，不知为不知，是知也  写在前面为了更好的理解下面提到的Linux下5种网络IO的概念，我们先理清几个概念。 程序空间与内核空间在Linux中，对于一次读取IO的操作，数据并不会直接拷贝到程序的程序缓冲区。它首先会被拷贝到操作系统内核的缓冲区中，然后才会从操作系统内核的缓冲区拷贝到应用程序的缓冲区。  Wai">
+<meta name="description" content="知之为知之，不知为不知，是知也  写在前面为了更好的理解下面提到的Linux下5种网络IO的概念，我们先理清几个概念。 程序空间与内核空间在Linux中，对于一次读取IO的操作，数据并不会直接拷贝到程序的程序缓冲区。它首先会被拷贝到操作系统内核的缓冲区中，然后才会从操作系统内核的缓冲区拷贝到应用程序的缓冲区。">
 <meta name="keywords" content="同步,异步,阻塞,非阻塞,I&#x2F;O">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux的5种I&#x2F;O模型">
 <meta property="og:url" content="http://blog.i-kristy.cn/2017/11/30/linux-io-model/index.html">
 <meta property="og:site_name" content="iBlog">
-<meta property="og:description" content="知之为知之，不知为不知，是知也  写在前面为了更好的理解下面提到的Linux下5种网络IO的概念，我们先理清几个概念。 程序空间与内核空间在Linux中，对于一次读取IO的操作，数据并不会直接拷贝到程序的程序缓冲区。它首先会被拷贝到操作系统内核的缓冲区中，然后才会从操作系统内核的缓冲区拷贝到应用程序的缓冲区。  Waiting for the data to be ready(等待数据到达内核缓冲">
+<meta property="og:description" content="知之为知之，不知为不知，是知也  写在前面为了更好的理解下面提到的Linux下5种网络IO的概念，我们先理清几个概念。 程序空间与内核空间在Linux中，对于一次读取IO的操作，数据并不会直接拷贝到程序的程序缓冲区。它首先会被拷贝到操作系统内核的缓冲区中，然后才会从操作系统内核的缓冲区拷贝到应用程序的缓冲区。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://blog.i-kristy.cn/upload_images/blocking-io.jpg">
 <meta property="og:image" content="http://blog.i-kristy.cn/upload_images/nonblocking-io.jpg">
@@ -124,10 +124,10 @@
 <meta property="og:image" content="http://blog.i-kristy.cn/upload_images/signal-driven-io.jpg">
 <meta property="og:image" content="http://blog.i-kristy.cn/upload_images/asynchronous-io.jpg">
 <meta property="og:image" content="http://blog.i-kristy.cn/upload_images/IO模型比较.jpg">
-<meta property="og:updated_time" content="2017-11-30T07:50:49.444Z">
+<meta property="og:updated_time" content="2017-11-30T08:06:35.069Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux的5种I&#x2F;O模型">
-<meta name="twitter:description" content="知之为知之，不知为不知，是知也  写在前面为了更好的理解下面提到的Linux下5种网络IO的概念，我们先理清几个概念。 程序空间与内核空间在Linux中，对于一次读取IO的操作，数据并不会直接拷贝到程序的程序缓冲区。它首先会被拷贝到操作系统内核的缓冲区中，然后才会从操作系统内核的缓冲区拷贝到应用程序的缓冲区。  Waiting for the data to be ready(等待数据到达内核缓冲">
+<meta name="twitter:description" content="知之为知之，不知为不知，是知也  写在前面为了更好的理解下面提到的Linux下5种网络IO的概念，我们先理清几个概念。 程序空间与内核空间在Linux中，对于一次读取IO的操作，数据并不会直接拷贝到程序的程序缓冲区。它首先会被拷贝到操作系统内核的缓冲区中，然后才会从操作系统内核的缓冲区拷贝到应用程序的缓冲区。">
 <meta name="twitter:image" content="http://blog.i-kristy.cn/upload_images/blocking-io.jpg">
 
 
@@ -442,7 +442,7 @@
         <blockquote class="blockquote-center">知之为知之，不知为不知，是知也</blockquote>
 
 <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>为了更好的理解下面提到的Linux下5种网络IO的概念，我们先理清几个概念。</p>
-<h2 id="程序空间与内核空间"><a href="#程序空间与内核空间" class="headerlink" title="程序空间与内核空间"></a>程序空间与内核空间</h2><p>在Linux中，对于一次读取IO的操作，数据并不会直接拷贝到程序的程序缓冲区。它首先会被拷贝到操作系统内核的缓冲区中，然后才会从操作系统内核的缓冲区拷贝到应用程序的缓冲区。</p>
+<h2 id="程序空间与内核空间"><a href="#程序空间与内核空间" class="headerlink" title="程序空间与内核空间"></a>程序空间与内核空间</h2><p>在Linux中，对于一次读取IO的操作，数据并不会直接拷贝到程序的程序缓冲区。它首先会被拷贝到操作系统内核的缓冲区中，然后才会从操作系统内核的缓冲区拷贝到应用程序的缓冲区。<br><a id="more"></a></p>
 <ol>
 <li>Waiting for the data to be ready(等待数据到达内核缓冲区)</li>
 <li>Copying the data from the kernel to the process(从内核缓冲区拷贝数据到程序缓冲区)</li>
