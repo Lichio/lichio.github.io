@@ -109,18 +109,18 @@
 
 
 
-<meta name="description" content="初入IoC通常我们在一个类中如果依赖于某个类或者服务，最简单而且有效的方式就是直接在类的构造函数中新建相应的依赖类。也就是说，我们每次用到依赖对象时都要主动去获取（例如用new去生成一个对象）。而我们最终想要的，其实就是直接调用依赖对象所提供的某项服务，我们的想法是，只要我们用到这个依赖对象时，它能够准备就绪，我们不用">
+<meta name="description" content="千里之行，始于足下  初入IoC通常我们在一个类中如果依赖于某个类或者服务，最简单而且有效的方式就是直接在类的构造函数中新建相应的依赖类。也就是说，我们每次用到依赖对象时都要主动去获取（例如用new去生成一个对象）。而我们最终想要的，其实就是直接调用依赖对象所提供的某项服务，我们的想法是，只要我们用到这个依赖对象时，它">
 <meta name="keywords" content="Java,IoC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Starting IoC">
 <meta property="og:url" content="http://blog.i-kristy.cn/2017/11/22/Starting-IoC/index.html">
 <meta property="og:site_name" content="iBlog">
-<meta property="og:description" content="初入IoC通常我们在一个类中如果依赖于某个类或者服务，最简单而且有效的方式就是直接在类的构造函数中新建相应的依赖类。也就是说，我们每次用到依赖对象时都要主动去获取（例如用new去生成一个对象）。而我们最终想要的，其实就是直接调用依赖对象所提供的某项服务，我们的想法是，只要我们用到这个依赖对象时，它能够准备就绪，我们不用管这个对象是自己生成的还是从哪里传过来的。">
+<meta property="og:description" content="千里之行，始于足下  初入IoC通常我们在一个类中如果依赖于某个类或者服务，最简单而且有效的方式就是直接在类的构造函数中新建相应的依赖类。也就是说，我们每次用到依赖对象时都要主动去获取（例如用new去生成一个对象）。而我们最终想要的，其实就是直接调用依赖对象所提供的某项服务，我们的想法是，只要我们用到这个依赖对象时，它能够准备就绪，我们不用管这个对象是自己生成的还是从哪里传过来的。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-23T13:42:32.730Z">
+<meta property="og:updated_time" content="2017-11-30T06:57:19.906Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Starting IoC">
-<meta name="twitter:description" content="初入IoC通常我们在一个类中如果依赖于某个类或者服务，最简单而且有效的方式就是直接在类的构造函数中新建相应的依赖类。也就是说，我们每次用到依赖对象时都要主动去获取（例如用new去生成一个对象）。而我们最终想要的，其实就是直接调用依赖对象所提供的某项服务，我们的想法是，只要我们用到这个依赖对象时，它能够准备就绪，我们不用管这个对象是自己生成的还是从哪里传过来的。">
+<meta name="twitter:description" content="千里之行，始于足下  初入IoC通常我们在一个类中如果依赖于某个类或者服务，最简单而且有效的方式就是直接在类的构造函数中新建相应的依赖类。也就是说，我们每次用到依赖对象时都要主动去获取（例如用new去生成一个对象）。而我们最终想要的，其实就是直接调用依赖对象所提供的某项服务，我们的想法是，只要我们用到这个依赖对象时，它能够准备就绪，我们不用管这个对象是自己生成的还是从哪里传过来的。">
 
 
 
@@ -431,7 +431,9 @@
       
 
       
-        <h1 id="初入IoC"><a href="#初入IoC" class="headerlink" title="初入IoC"></a>初入IoC</h1><p>通常我们在一个类中如果依赖于某个类或者服务，最简单而且有效的方式就是直接在类的构造函数中新建相应的依赖类。也就是说，我们每次用到依赖对象时都要主动去获取（例如用new去生成一个对象）。而我们最终想要的，其实就是直接调用依赖对象所提供的某项服务，我们的想法是，只要我们用到这个依赖对象时，它能够准备就绪，我们不用管这个对象是自己生成的还是从哪里传过来的。</p>
+        <blockquote class="blockquote-center">千里之行，始于足下</blockquote>
+
+<h1 id="初入IoC"><a href="#初入IoC" class="headerlink" title="初入IoC"></a>初入IoC</h1><p>通常我们在一个类中如果依赖于某个类或者服务，最简单而且有效的方式就是直接在类的构造函数中新建相应的依赖类。也就是说，我们每次用到依赖对象时都要主动去获取（例如用new去生成一个对象）。而我们最终想要的，其实就是直接调用依赖对象所提供的某项服务，我们的想法是，只要我们用到这个依赖对象时，它能够准备就绪，我们不用管这个对象是自己生成的还是从哪里传过来的。</p>
 <a id="more"></a>
 <p>所有的被注入对象和依赖对象现在由IoC Service Provider统一管理，被注入对象需要什么，直接通知IoC Service Provider，后者就会把相应的被依赖对象注入到被注入对象中（原来是需要什么东西自己去拿，现在是需要什么东西就让别人送过来）。</p>
 <p><strong>三种依赖注入方式</strong>（被注入对象如何通知IoC Service Provider）：</p>
@@ -564,7 +566,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -575,7 +577,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -586,7 +588,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
